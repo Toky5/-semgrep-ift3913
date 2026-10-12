@@ -1,0 +1,14 @@
+rules:
+  - id: string-comparee-avec-egal-egal
+    languages: [java]
+    severity: WARNING
+    message: >-
+      Comparaison de String avec '==' : Java compare les références, pas le texte.
+      Utilise $X.equals($Y).
+    patterns:
+      - pattern-either:
+          - pattern: (String $X) == $Y
+          - pattern: $X == (String $Y)
+      - pattern-not: $X == null
+      - pattern-not: null == $Y
+    fix: $X.equals($Y)

@@ -1,0 +1,19 @@
+name: semgrep
+on:
+  pull_request:
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Semgrep, n'échoue que sur les NOUVELLES alertes
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          semgrep scan --config rules/ --error --metrics off \
+            --baseline-commit "${{ github.event.pull_request.base.sha }}" \
+            exemple1-trivial/ exemple2-app-vibe-codee/

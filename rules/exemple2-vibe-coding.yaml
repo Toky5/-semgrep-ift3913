@@ -1,0 +1,17 @@
+rules:
+  - id: cle-api-dans-le-code
+    languages: [regex]
+    severity: ERROR
+    message: >-
+      Clé d'API écrite dans le code : toute personne qui lit le code peut l'utiliser.
+      Mets-la dans une variable d'environnement.
+    pattern-regex: sk-(proj-)?[A-Za-z0-9_-]{20,}
+
+  - id: injection-sql-fstring
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Requête SQL construite avec une f-string : risque d'injection SQL.
+      Utilise une requête paramétrée : execute("... = ?", (nom,)).
+    pattern: $DB.execute(f"...")
+    fix: $DB.execute("...")
