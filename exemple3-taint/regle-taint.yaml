@@ -1,0 +1,16 @@
+rules:
+  - id: injection-sql-taint
+    mode: taint
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Une saisie de l'utilisateur arrive dans le texte d'une requête SQL.
+      Utilise une requête paramétrée : execute("... = ?", (nom,)).
+    pattern-sources:
+      - pattern: input(...)
+    pattern-sanitizers:
+      - pattern: int(...)
+    pattern-sinks:
+      - patterns:
+          - pattern: $DB.execute($REQUETE, ...)
+          - focus-metavariable: $REQUETE

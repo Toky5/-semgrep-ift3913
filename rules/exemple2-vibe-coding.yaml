@@ -14,4 +14,3 @@ rules:
       Requête SQL construite avec une f-string : risque d'injection SQL.
       Utilise une requête paramétrée : execute("... = ?", (nom,)).
     pattern: $DB.execute(f"...")
-    fix: $DB.execute("...")
