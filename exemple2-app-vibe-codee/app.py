@@ -10,8 +10,7 @@ def chercher_utilisateur(db, nom):
 # def chercher_utilisateur_corrige(db, nom):
 #     return db.execute("SELECT * FROM users WHERE nom = ?", (nom,)).fetchall()
 
-def supprimer_utilisateur(db, nom):
-      db.execute(f"DELETE FROM users WHERE nom = '{nom}'")
+
 
 
 if __name__ == "__main__":
