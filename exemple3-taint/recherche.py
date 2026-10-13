@@ -15,11 +15,10 @@ def recherche_en_deux_etapes():
     return db.execute(requete).fetchall()
 
 
+# Good 
 def recherche_par_age():
     age = int(input("Âge : "))
     return db.execute(f"SELECT * FROM users WHERE age = {age}").fetchall()
 
 
-def recherche_parametree():
-    nom = input("Nom : ")
-    return db.execute("SELECT * FROM users WHERE nom = ?", (nom,)).fetchall()
+

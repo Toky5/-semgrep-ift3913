@@ -3,7 +3,7 @@ public class Login {
     static final String ADMIN = "admin";
 
     static boolean estAdmin(String role) {
-        return role == ADMIN;
+        return role.equals(ADMIN);
     }
 
     public static void main(String[] args) {
