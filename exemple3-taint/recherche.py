@@ -14,8 +14,13 @@ def recherche_en_deux_etapes():
     requete = f"SELECT * FROM users WHERE nom = '{nom}'"
     return db.execute(requete).fetchall()
 
+def recherche_par_nom():
+    nom = input("Nom : ")
+    requete = f"SELECT * FROM users WHERE nom = '{nom}'"
+    return db.execute(requete).fetchall()
 
-# Good 
+
+# filtré
 def recherche_par_age():
     age = int(input("Âge : "))
     return db.execute(f"SELECT * FROM users WHERE age = {age}").fetchall()

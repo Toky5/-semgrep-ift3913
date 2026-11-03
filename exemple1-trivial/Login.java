@@ -3,7 +3,7 @@ public class Login {
     static final String ADMIN = "admin";
 
     static boolean estAdmin(String role) {
-        return role.equals(ADMIN);
+        return role == ADMIN; 
     }
 
     public static void main(String[] args) {
@@ -16,3 +16,9 @@ public class Login {
         System.out.println("Test avec la saisie : OK");
     }
 }
+
+// commande : semgrep -e '(String $X) == $Y' --lang java exemple1-trivial\
+
+// semgrep scan --config rules\exemple1-trivial.yaml exemple1-trivial\
+
+// semgrep scan --config rules\exemple1-trivial.yaml --autofix --dryrun exemple1-trivial\
