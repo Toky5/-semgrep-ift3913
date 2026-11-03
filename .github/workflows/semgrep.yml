@@ -15,8 +15,9 @@ jobs:
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           semgrep scan --config rules/ --error --metrics off \
+            --json --output scan_results.json \
             --baseline-commit "${{ github.event.pull_request.base.sha }}" \
-            exemple1-trivial/ exemple2-app-vibe-codee/
+            exemple1-trivial/ exemple2-app-vibe-codee/ 
 on:
   issues:
     types: [opened]
