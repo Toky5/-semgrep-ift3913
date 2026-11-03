@@ -14,7 +14,7 @@ def supprimer_utilisateurs(db, nom):
     return db.execute("DELETE FROM users WHERE nom = ?", (nom,))
 
 def ajouter_utilisateur(db, nom):
-    return db.execute("INSERT INTO users (nom) VALUES (?)", (nom,))
+    return db.execute("INSERT INTO users nom VALUES ?", (nom,))
 
 if __name__ == "__main__":
     db = sqlite3.connect(":memory:")
